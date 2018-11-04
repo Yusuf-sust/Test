@@ -1,0 +1,24 @@
+#define MAXD 30000000  
+int C[MAXD] = {0};  
+void init(){  
+    for(int c = 1 ; c <= MAXD / 2 ; c ++)  
+        for(int a = c + c ; a <= MAXD ; a += c){  
+             int b = a - c;  
+             if(c == (a ^ b))  
+                C[a] ++;  
+        }  
+    for(int i = 2 ; i <= MAXD ; i++)  
+         C[i] += C[i - 1];  
+    return ;  
+}  
+int main(){  
+    int T,Case = 1;  
+    init();  
+    scanf("%d",&T);  
+    while(T--){  
+        int n;  
+        scanf("%d",&n);  
+        printf("Case %d: %d\n",Case++,C[n]);  
+    }  
+    return 0;  
+} 
